@@ -1,0 +1,77 @@
+1.  False, True. First letters have to be capitalized.
+
+2.  and, or, not
+
+3.
+<and>
+True and True == True
+True and False == False
+False and True == False
+False and False == False
+
+<or>
+True or True == True
+True or False == True
+False or True == True
+False or False == False
+
+<not>
+not True == False
+not False == True
+
+4.
+False
+False
+True
+False
+False
+True
+
+5.  <, >, >=, <=, ==, !=
+
+6. An expression with the equal to(==) operator evaluates to a Boolean value. The assignment operator (=) saves the left hand value into the right hand variable.
+
+7. Conditions are expressions that evaluate down to a Boolean value. Conditions are used to control the flow of a program.
+
+8.
+1)
+if spam == 10:
+    print('eggs')
+    ...
+        print('ham')
+    print('spam')
+
+2)
+if spam > 5:
+    print('bacon')
+
+3)
+else:
+    print('ham')
+
+9.
+if spam == 1:
+    print('Hello')
+elif spam == 2:
+    print('Howdy')
+else:
+    print('Greetings!')
+
+10. ctrl-C
+
+11. 'break' exits the loop and all remaining iterations are ignored. 'continue' only skips the remainder of the current iteration and continues with the next iteration.
+
+12. They all produce the same result. The default start value for range() is 0 and the default step value is 1. The only difference is the number of arguments specified.
+
+13.
+<for loop>
+for i in range(1, 11):
+    print(i)
+
+<while loop>
+i = 1
+while i < 11:
+    print(i)
+    i += 1
+
+14. spam.bacon()

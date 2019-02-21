@@ -1,0 +1,54 @@
+Q1.
+[] are square brackets used to create list data types.
+
+Q2.
+spam[2] = 'hello'
+
+Q3.
+'d'
+
+Q4.
+'d'
+
+Q5.
+['a', 'b']
+
+Q6.
+1
+
+Q7.
+[3.14, 'cat', 11, 'cat', True, 99]
+
+Q8.
+[3.14, 11, 'cat', True]
+
+Q9.
+concatenation: +
+replication: *
+
+Q10.
+append() adds an item to the end of a list, whereas insert() adds an item at a specific index of the list.
+
+Q11.
+del and remove()
+
+Q12.
+Just like lists, strings can be indexed and sliced. len() can be used on strings, and the in and not in operators can be used on strings as well.
+
+Q13.
+Tuples are immutable, whereas lists are mutable.
+
+Q14.
+Tuples with single values can be typed with a trailing comma inside the parentheses.
+ex) (42, )
+
+Q15.
+tuple(), list()
+
+Q16.
+They contain the reference (memory address) that points to the list.
+
+
+Q17.
+When a list contains objects, such as lists, copy.copy() treats these objects as references. Therefore, changing the objects would affect the original list.
+copy.deepcopy() makes separate copies of object items. Changing the object in the copy does not affect the object in the original list.

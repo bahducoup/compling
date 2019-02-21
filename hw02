@@ -1,0 +1,13 @@
+1.  - operators: *, -, /, +
+    - values: 'hello', -88.8, 5
+2.  - variable: spam
+    - string: 'spam'
+3.  str, int, float
+4.  Expressions are made of values and operators. They evaluate to a single value.
+5.  An assignment statement stores a value in a variable, whereas an expression ultimately boils down to a single value.
+6.  20
+7.  'spamspamspam'
+8.  Variable names cannot begin with a number.
+9.  int(), float(), str()
+10. In python, you can't concatenate a str and an int. This can be fixed by explicitly converting the int to a str.
+    ex) 'I have eaten ' + str(99) + ' burritos.'
