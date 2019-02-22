@@ -1,4 +1,12 @@
-from unicodedata import name
+from unicodedata import name, lookup
+
+LEADING = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'
+VOWEL = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ'
+TRAILING = ('',) + tuple('ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ')
+
+LEADING_to_idx = {v: idx for idx, v in enumerate(LEADING)}
+VOWEL_to_idx = {v: idx for idx, v in enumerate(VOWEL)}
+TRAILING_to_idx = {v: idx for idx, v in enumerate(TRAILING)}
 
 def ishangul(string):
     for ch in string:
@@ -25,16 +33,42 @@ def get_ga(hangul):
     else:
         return
 
-if __name__=='__main__':
-    l1 = ['파이썬', 'Python', '파이썬3']
-    l2 = ['P', '파', '이', '썬']
-    l3 = ['수박', '복숭아']
+def decompose(syllable):
+    try:
+        if 'HANGUL SYLLABLE' in name(syllable):
+            n_cnt = len(VOWEL) * len(TRAILING)
+            t_cnt = len(TRAILING)
 
-    for word in l1:
-        print("ishangul('%s') :: %s" % (word, ishangul(word)))
-    print()
-    for syllable in l2:
-        print("hasbatchim('%s') :: %s" % (syllable, hasbatchim(syllable)))
-    print()
-    for word in l3:
-        print('%s%s 달다.' % (word, get_ga(word)))
+            s_ind = ord(syllable) - ord('가')
+            l_ind = s_ind // n_cnt
+            v_ind = s_ind % n_cnt // t_cnt
+            t_ind = s_ind % n_cnt % t_cnt
+
+            jamos = ''
+            jamos += LEADING[l_ind]
+            jamos += VOWEL[v_ind]
+            jamos += TRAILING[t_ind]
+
+            return jamos
+        else:
+            return syllable
+    except TypeError:
+        return syllable
+
+def compose(hangul):
+    try:
+        base = ord('가')
+        n_cnt = len(VOWEL) * len(TRAILING)
+        t_cnt = len(TRAILING)
+        if len(hangul) == 2:
+            l, v = hangul
+            idx = base + (LEADING_to_idx[l] * n_cnt) + (VOWEL_to_idx[v] * t_cnt)
+            return chr(idx)
+        elif len(hangul) == 3:
+            l, v, t = hangul
+            idx = base + (LEADING_to_idx[l] * n_cnt) + (VOWEL_to_idx[v] * t_cnt) + TRAILING_to_idx[t]
+            return chr(idx)
+        else:
+            return hangul
+    except:
+        return hangul
