@@ -36,7 +36,7 @@ def ngram_prob(ngram, add_k):
         print('P(%s): %.32f' % (' '.join(ngram), prob))
         return prob
 
-def sentence_probability(n, sentence, add_k=1):
+def sentence_probability(n, sentence, add_k=0):
     sentence = ['<s>'] * (n-1) + sentence.split(' ')
     prob = 1
     for i in range(0, len(sentence) - n + 1):
@@ -61,7 +61,6 @@ def trigram_interpolation(sentence, weights):
 
 if __name__=='__main__':
     sentence = '하늘은 파랗고 단풍잎은 빨갛고 은행잎은 노랗고'
-    '''
     print('=======================================================')
     unigram_prob = sentence_probability(1, sentence)
     print('\n>> UNIGRAM:')
@@ -72,7 +71,6 @@ if __name__=='__main__':
     print('\n>> BIGRAM:')
     print('         PROBABILITY:', bigram_prob)
     print('         PERPLEXITY:', perplexity(bigram_prob, sentence))
-    '''
     print('=======================================================')
     trigram_prob = sentence_probability(3, sentence)
     print('\n>> TRIGRAM:')
